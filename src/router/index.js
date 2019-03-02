@@ -6,7 +6,7 @@ import About from '@/components/About'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Secure from '@/components/Secure'
-import dreamRoutes from './dream';
+import dreamRoutes from './dream'
 
 Vue.use(Router)
 
@@ -42,7 +42,7 @@ const baseRoutes = [
 ]
 
 
-const routes = baseRoutes.concat(dreamRoutes);
+const routes = baseRoutes.concat(dreamRoutes)
 let router = new Router({
   routes 
 })

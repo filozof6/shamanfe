@@ -3,12 +3,12 @@ import App from './App.vue'
 import Vuex from 'vuex'
 import store from './store'
 import Axios from 'axios'
-import router from './router';
+import router from './router'
 
 Vue.config.productionTip = false
 Vue.use(Vuex)
 
-Vue.prototype.$http = Axios;
+Vue.prototype.$http = Axios
 const token = localStorage.getItem('token')
 if (token) {
   Vue.prototype.$http.defaults.headers.common['Authorization'] = token
@@ -19,11 +19,6 @@ new Vue({
   router,
   created () {
     //this.$store.dispatch('dream/getDreams')
-  },
-  computed: {
-    dreams () {
-      return this.$store.getters.dreams
-    }
   },
   render: h => h(App),
 }).$mount('#app')

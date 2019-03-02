@@ -1,44 +1,30 @@
 <template>
-  <section class="dream">
-    dream
-    <article v-for="(dream, i) in dreams" :key="i + 10">
-      <h1>{{dream.name | properCase}}</h1>
-      <p>{{ dream.description }}</p>
-      <button @click="del">Delete</button> 
-    </article>
+  <section class="edit-dream">
+      <h1>Edit</h1>
+      <dream-form :prop-dream="dream" @submitted="update($event)" />
   </section>
 </template>
 <script>
-/* eslint-disable */ 
+  import DreamForm from "./Form"
   export default {
-
-    created () {
-      this.$store.dispatch('dream/getDreams')
-    },
-    computed: {
-      dreams () {
-        return this.$store.getters.dreams
+    props: ['id'],
+    components: {DreamForm},
+    computed:{
+      dream() {
+        return this.$store.state.dream.dream;
       }
     },
-    // computed: {
-    //   image() {
-    //     // return `/images/${this.color}.png`;
-    //   }
-    // },
-    // methods: {
-    //   update(val) {
-    //     this.$emit('update', this.id, val.target.selectedOptions[0].value);
-    //   },
-    //   del() {
-    //     this.$emit('delete', this.id);
-    //   }
-    // },
-    // props: ['id', 'color', 'name'],
-    // filters: {
-    //   properCase(string) {
-    //     return string.charAt(0).toUpperCase() + string.slice(1);
-    //   }
-    // }
+    created () {
+      this.$store.dispatch('dream/getDream', this.id)
+    },
+    methods: {
+      update(dreamToUpdate) {
+        console.log('dreamToUpdate')
+        console.log(dreamToUpdate)
+        this.$store.dispatch('dream/updateDream', dreamToUpdate)
+        this.$router.push({"name" : "dreams" })
+      }
+    },
   }
 </script>
 <style></style>

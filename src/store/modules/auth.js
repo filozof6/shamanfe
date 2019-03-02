@@ -29,7 +29,6 @@ export default {
     },
     actions: {
         login({ commit }, user) {
-            console.log(user);
             return new Promise((resolve, reject) => {
                 commit('auth_request')
                 axios({ url: 'http://php72.local/shaman/public/index.php/api/auth/login', data: user, method: 'POST' })

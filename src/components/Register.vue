@@ -79,7 +79,7 @@ export default {
       password: "",
       confirm_password: "",
       is_admin: null
-    };
+    }
   },
   register: function() {
     let data = {
@@ -87,13 +87,13 @@ export default {
       email: this.email,
       password: this.password,
           is_admin: this.is_admin
-    };
+    }
     this.$store
       .dispatch("register", data)
       .then(() => this.$router.push("/"))
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
   }
-};
+}
 </script>
 
 <style scoped>

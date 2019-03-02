@@ -44,8 +44,8 @@ export default {
           this.$store.dispatch(logout)
         }
         throw err;
-      });
-    });
+      })
+    })
   }
 }
 </script>
