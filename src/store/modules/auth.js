@@ -32,7 +32,7 @@ export default {
             console.log(user);
             return new Promise((resolve, reject) => {
                 commit('auth_request')
-                axios({ url: 'http://php72.example.com/shaman/public/index.php/api/auth/login', data: user, method: 'POST' })
+                axios({ url: 'http://php72.local/shaman/public/index.php/api/auth/login', data: user, method: 'POST' })
                     .then(resp => {
                         const token = 'Bearer '+resp.data.access_token
                         localStorage.setItem('token', token)
@@ -50,7 +50,7 @@ export default {
         register({ commit }, user) {
             return new Promise((resolve, reject) => {
                 commit('auth_request')
-                axios({ url: 'http://php72.example.com/shaman/public/index.php/api/auth/register', data: user, method: 'POST' })
+                axios({ url: 'http://php72.local/shaman/public/index.php/api/auth/register', data: user, method: 'POST' })
                     .then(resp => {
                         const token = resp.data.token
                         const user = resp.data.user

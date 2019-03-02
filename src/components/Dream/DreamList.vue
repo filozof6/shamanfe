@@ -6,7 +6,7 @@
       <p>{{ dream.description }}</p>
 
       <button @click="del">Edit</button> 
-      <button @click="del">Delete</button> 
+      <button @click="del(dream.id)">Delete</button> 
     </article>
   </section>
 </template>
@@ -18,7 +18,7 @@
     },
     computed: {
       dreams () {
-        return this.$store.state.dream.dreams.data
+        return this.$store.state.dream.dreams
       }
     },
     // computed: {
@@ -26,20 +26,20 @@
     //     return `/images/${this.color}.png`;
     //   }
     // },
-    // methods: {
+     methods: {
     //   update(val) {
     //     this.$emit('update', this.id, val.target.selectedOptions[0].value);
     //   },
-    //   del() {
-    //     this.$emit('delete', this.id);
-    //   }
-    // },
+      del(dreamId) {
+        this.$store.dispatch('dream/deleteDream', dreamId)
+      }
+     },
     // props: ['id', 'color', 'name'],
-    // filters: {
-    //   properCase(string) {
-    //     return string.charAt(0).toUpperCase() + string.slice(1);
-    //   }
-    // }
+     filters: {
+       properCase(string) {
+         return string.charAt(0).toUpperCase() + string.slice(1);
+       }
+     }
   }
 </script>
 <style></style>
